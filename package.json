@@ -1,0 +1,53 @@
+{
+  "name": "acc-store-tracker",
+  "displayName": "acc-store-tracker",
+  "description": "addStore로 참조가 끊기는 부분을 연결해주는 vscode extension",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.98.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:typescript"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Lit Store Reference Tracker",
+      "properties": {
+        "storeReferenceTracker.enableIndexing": {
+          "type": "boolean",
+          "default": true,
+          "description": "현재 패키지의 자동 인덱싱 활성화"
+        },
+        "storeReferenceTracker.indexDepth": {
+          "type": "number",
+          "default": 5,
+          "description": "분석할 최대 임포트 깊이"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.98.0",
+    "@types/node": "^22.13.13",
+    "@typescript-eslint/eslint-plugin": "^8.28.0",
+    "@typescript-eslint/parser": "^8.28.0",
+    "eslint": "^9.23.0",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "typescript": "^5.8.2"
+  }
+}
